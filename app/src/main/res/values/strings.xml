@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Jet2EmployeeListTask</string>
+    <string name="reload">RETRY</string>
+    <string name="errorScreenText">Something went wrong at our end!</string>
+    <string name="action_refresh">Refresh</string>
+    <string name="search_hint">Type Name..</string>
 </resources>

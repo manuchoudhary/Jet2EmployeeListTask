@@ -8,6 +8,6 @@ import retrofit2.http.Query;
 
 public interface GetEmployeeDataService {
 
-    @GET("/")
+    @GET("/api")
     Call<EmployeeList> getEmployeeData(@Query("results") int count);
 }

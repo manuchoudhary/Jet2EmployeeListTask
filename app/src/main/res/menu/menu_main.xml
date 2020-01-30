@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".main_activity.MainActivity">
+
+    <item
+        android:id="@+id/action_refresh"
+        android:orderInCategory="1"
+        android:title="@string/action_refresh"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_refresh"/>
+
+    <item
+        android:id="@+id/action_search"
+        android:orderInCategory="0"
+        android:title="Action Search"
+        app:showAsAction="always"
+        app:actionViewClass="android.widget.SearchView" />
+
+</menu>

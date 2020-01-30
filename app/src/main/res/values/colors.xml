@@ -3,4 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="feed_bg">#d3d6db</color>
+    <color name="feed_item_bg">#ffffff</color>
+    <color name="feed_item_border">#c2c3c8</color>
+    <color name="errorScreenBackColor">#E85959</color>
+    <color name="errorScreenTextColor">#FFFFFF</color>
+    <color name="errorRetryButtonBackColor">#4A4A4A</color>
 </resources>
