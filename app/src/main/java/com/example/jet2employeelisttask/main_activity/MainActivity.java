@@ -1,8 +1,10 @@
-package com.example.jet2employeelisttask;
+package com.example.jet2employeelisttask.main_activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.jet2employeelisttask.R;
 
 public class MainActivity extends AppCompatActivity {
 
