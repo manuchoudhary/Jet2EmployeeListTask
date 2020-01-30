@@ -5,9 +5,11 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +21,9 @@ import com.example.jet2employeelisttask.main_activity.RecyclerItemClickListener;
 import com.example.jet2employeelisttask.model.Employee;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.EmployeeViewHolder> implements Filterable {
@@ -56,10 +61,51 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
                     recyclerItemClickListener.onItemClick(filteredEmployeeList.get(position));
                 }
             });
+            viewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deleteRecord(filteredEmployeeList.get(position));
+                }
+            });
         } else {
             viewHolder.first.setVisibility(View.GONE);
             viewHolder.last.setVisibility(View.GONE);
             viewHolder.gender.setVisibility(View.GONE);
+        }
+    }
+
+    public void sortList(String action) {
+        if (filteredEmployeeList.size() > 0) {
+            if (action.equals("name")) {
+                Collections.sort(filteredEmployeeList, new Comparator<Employee>() {
+                    @Override
+                    public int compare(final Employee object1, final Employee object2) {
+                        return object1.getName().getLast().compareTo(object2.getName().getLast());
+                    }
+                });
+            } else {
+                Collections.sort(filteredEmployeeList, new Comparator<Employee>() {
+                    @Override
+                    public int compare(final Employee object1, final Employee object2) {
+                        Integer ageEmployee_1 = Integer.parseInt(object1.getDob().getAge());
+                        Integer ageEmployee_2 = Integer.parseInt(object2.getDob().getAge());
+                        return ageEmployee_1.compareTo(ageEmployee_2);
+                    }
+                });
+            }
+            notifyDataSetChanged();
+        }
+    }
+
+    public void deleteRecord(Employee employee) {
+        if (filteredEmployeeList.size() > 0) {
+            for (Iterator<Employee> it = filteredEmployeeList.iterator(); it.hasNext(); ) {
+                Employee emp = it.next();
+                if (emp.getEmail().equals(employee.getEmail())) {
+                    it.remove();
+                }
+            }
+            notifyDataSetChanged();
         }
     }
 
@@ -108,6 +154,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
         TextView first, last, gender;
         com.android.volley.toolbox.NetworkImageView profilePic;
         CardView card;
+        Button btnDelete;
 
         EmployeeViewHolder(View itemView) {
             super(itemView);
@@ -115,6 +162,7 @@ public class EmployeeAdapter extends RecyclerView.Adapter<EmployeeAdapter.Employ
             this.first = itemView.findViewById(R.id.first);
             this.last = itemView.findViewById(R.id.last);
             this.gender = itemView.findViewById(R.id.gender);
+            this.btnDelete = itemView.findViewById(R.id.delete);
             this.profilePic = itemView.findViewById(R.id.employeeThumbnailPic);
         }
     }

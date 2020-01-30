@@ -1,11 +1,13 @@
 package com.example.jet2employeelisttask.main_activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     private ProgressBar progressBar;
     private SearchView searchView;
     private EmployeeAdapter adapter;
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     private RecyclerItemClickListener recyclerItemClickListener = new RecyclerItemClickListener() {
         @Override
         public void onItemClick(Employee employee) {
-            Toast.makeText(getApplication(), employee.getName().getFirst(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplication(), employee.getDob().getAge(), Toast.LENGTH_LONG).show();
         }
     };
 
@@ -178,6 +181,14 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
         if (id == R.id.action_search) {
             return true;
+        }
+
+        if (id == R.id.action_sort_name) {
+            adapter.sortList("name");
+        }
+
+        if (id == R.id.action_sort_age) {
+            adapter.sortList("age");
         }
 
         return super.onOptionsItemSelected(item);

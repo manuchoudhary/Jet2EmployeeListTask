@@ -17,4 +17,14 @@
         app:showAsAction="always"
         app:actionViewClass="android.widget.SearchView" />
 
+    <item
+        android:id="@+id/action_sort_name"
+        android:orderInCategory="0"
+        android:title="Sort by last name"/>
+
+    <item
+        android:id="@+id/action_sort_age"
+        android:orderInCategory="0"
+        android:title="Sort by age"/>
+
 </menu>
