@@ -8,13 +8,13 @@ import java.util.List;
 public class EmployeeList implements Serializable {
 
     @SerializedName("results")
-    private List<Emplyee> employeeList;
+    private List<Employee> employeeList;
 
-    public List<Emplyee> getEmployeeList() {
+    public List<Employee> getEmployeeList() {
         return employeeList;
     }
 
-    public void setEmployeeList(List<Emplyee> employeeList) {
+    public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
 }
