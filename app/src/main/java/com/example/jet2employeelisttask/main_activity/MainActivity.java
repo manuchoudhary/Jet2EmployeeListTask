@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.jet2employeelisttask.R;
 import com.example.jet2employeelisttask.adapter.EmployeeAdapter;
+import com.example.jet2employeelisttask.employee_detail_activity.DetailActivity;
 import com.example.jet2employeelisttask.model.Employee;
 
 import java.util.List;
@@ -34,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     private ProgressBar progressBar;
     private SearchView searchView;
     private EmployeeAdapter adapter;
-    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +106,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     private RecyclerItemClickListener recyclerItemClickListener = new RecyclerItemClickListener() {
         @Override
         public void onItemClick(Employee employee) {
-            Toast.makeText(getApplication(), employee.getDob().getAge(), Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+            intent.putExtra("Employee", employee);
+            startActivity(intent);
         }
     };
 
